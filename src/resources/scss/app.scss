@@ -1,0 +1,29 @@
+@import "variable";
+* {
+  box-sizing: border-box;
+}
+::selection {
+  background-color: red;
+}
+html {
+  font-family: sans-serif;
+  background-color: whitesmoke;
+}
+
+a {
+  text-decoration: none;
+}
+
+main {
+  min-height: 80vh;
+}
+
+footer a {
+  color: whitesmoke;
+}
+
+footer a:focus,
+footer a:active,
+footer a:hover {
+  color: red !important;
+}

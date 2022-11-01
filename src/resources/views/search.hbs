@@ -1,0 +1,36 @@
+<form action="/news" method="post">
+  <div class="mb-3">
+    <label for="" class="form-label">
+      <h2>Search</h2>
+    </label>
+    <div class="d-flex nowrap">
+      <div class="col-8 mx-3">
+        <input
+          type="text"
+          class="form-control"
+          name="q"
+          id="search-input"
+          aria-describedby="helpId"
+          placeholder=""
+        />
+        <div class="mb-3">
+          <label for="gender-select" class="form-label">Gender</label>
+          <select
+            class="form-select form-select-sm"
+            name="gender-select"
+            id="gender-select"
+          >
+            <option selected>--Chon giới tính--</option>
+            <option value="male">Nam</option>
+            <option value="female">Nữ</option>
+          </select>
+        </div>
+      </div>
+      <button
+        class="btn btn-primary"
+        type="submit"
+        style="width: 100px; max-height: 70px; margin: auto 0;"
+      >Search</button>
+    </div>
+  </div>
+</form>
