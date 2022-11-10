@@ -1,1 +1,48 @@
-<h1>Home page</h1>
+<main class="my-5">
+    <div class="container-md">
+        <div class="row">
+            <div class="col">
+                <h1>Home</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-2">
+                {{!-- Options, Search, Controller, Menu --}}
+                <div class="mt-3">
+                    <a type="link" href="/blog/create" class="btn btn-primary">Create a new blog.</a>
+                    <a type="link" href="/blog/delete" class="btn btn-danger mt-3">Delete a blog.</a>
+                </div>
+            </div>
+            <div class="col-md-10">
+                <div class="main-content">
+                    {{!-- Blogs Table --}}
+                    <div class="row" style="row-gap: 30px;">
+                        {{#each courses}}
+                        <div class="col-sm-6 col-md-4">
+                            <div class="card">
+                                <div class="card__thumbnail">
+                                    <a href="blog/{{this.slug}}" alt="{{this.name}}">
+                                        <img src="{{this.image}}" alt="">
+                                    </a>
+                                </div>
+                                <div class="card__content">
+                                    <div class="card__heading">
+                                        <a href="blog/{{this.slug}}" alt="{{this.name}}">
+                                            <h2>{{this.name}}</h2>
+                                        </a>
+                                    </div>
+                                    <p class="card__description">
+                                        {{this.description}}
+                                    </p>
+                                    <a name="btn-{{this.name}}" id="btn-{{this.name}}" class="btn card__btn"
+                                        href="blog/{{this.slug}}" role="button">Xem thêm</a>
+                                </div>
+                            </div>
+                        </div>
+                        {{/each}}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

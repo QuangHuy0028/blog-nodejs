@@ -6,13 +6,57 @@
 
 html {
   font-family: sans-serif;
-  background-color: whitesmoke; }
+  background-color: #e7f6f2; }
 
 a {
-  text-decoration: none; }
+  text-decoration: none;
+  font-weight: bold;
+  color: #395b64; }
+
+.navbar-brand {
+  text-transform: uppercase;
+  font-size: 30px;
+  margin-right: 40px; }
+
+header nav {
+  background-color: #2c3333 !important; }
 
 main {
   min-height: 80vh; }
+
+main .main-content .card {
+  border: none;
+  overflow: hidden;
+  height: fit-content;
+  min-height: 500px;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.1); }
+
+main .main-content .card .card__thumbnail {
+  position: relative;
+  filter: brightness(100%) contrast(100%);
+  transition: filter 0.2s ease-in-out; }
+
+main .main-content .card .card__thumbnail:hover {
+  filter: brightness(80%) contrast(80%); }
+
+main .main-content .card .card__thumbnail img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover; }
+
+main .main-content .card .card__content {
+  padding: 20px; }
+
+main .main-content .card .card__content p {
+  font-size: 12px; }
+
+main .main-content .card .card__btn {
+  background-color: #a5c9ca;
+  color: #000; }
+
+main .main-content .card .card__btn:hover {
+  background-color: #395b64;
+  color: #fff !important; }
 
 footer a {
   color: whitesmoke; }
