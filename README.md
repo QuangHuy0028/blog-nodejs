@@ -6,4 +6,5 @@
 <li>MongoDB (Mongoose Library)</li>
 <li>Handlebars engine</li>
 <li>Bootstrap</li>
+<li>Morgan</li>
 </ul>
