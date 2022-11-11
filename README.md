@@ -1,4 +1,4 @@
-<h1>The first dynamic page (Personal Blog) using: </h1>
+<h1>The first dynamic website(Personal Blog) using: </h1>
 <ul>
 <li>Node JS framework</li>
 <li>Express library</li>
