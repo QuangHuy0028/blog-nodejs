@@ -9,6 +9,7 @@ const Blog = new Schema({
     description: {type: String, default: 'A description'},
     image: {type: String, default: ''},
     slug: {type: String, default: ''},
+    content: {type: String, default: ''},
     createAt: {type: Date, default: Date.now},
     updateAt: {type: Date, default: Date.now}
 });

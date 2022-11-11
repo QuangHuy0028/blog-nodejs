@@ -2,7 +2,7 @@
 
 <head>
   <meta charset="utf-8" />
-  <title>My blog</title>
+  <title>{{title}}</title>
   <!-- CSS only -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous" />
@@ -14,6 +14,7 @@
   <!-- External files -->
   <link rel="stylesheet" href="/css/app.css">
   <link rel="stylesheet" href="/css/home.css">
+  {{{css}}}
 </head>
 
 <body>
@@ -36,17 +37,17 @@
               <a class="nav-link" href="/search">Search</a>
             </li>
             <li class="nav-item dropdown">
-              <a class="nav-link dropdown-toggle" href="#" id="dropdownId" data-bs-toggle="dropdown"
+              <a class="nav-link dropdown-toggle" href="/contact" id="dropdownId" data-bs-toggle="dropdown"
                 aria-haspopup="true" aria-expanded="false">Contact</a>
               <div class="dropdown-menu" aria-labelledby="dropdownId">
-                <a class="dropdown-item" href="#">Action 1</a>
-                <a class="dropdown-item" href="#">Action 2</a>
+                <a class="dropdown-item" href="/contact">Action 1</a>
+                <a class="dropdown-item" href="/contact">Action 2</a>
               </div>
             </li>
           </ul>
-          <form class="d-flex my-2 my-lg-0">
-            <input class="form-control me-sm-2" type="text" placeholder="Search" />
-            <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+          <form class="d-flex my-2 my-lg-0" action="/search" method="GET">
+            <input class="form-control me-sm-2" type="text" name="q" placeholder="Search" />
+            <button class="btn btn-search my-2 my-sm-0" type="submit">Search</button>
           </form>
         </div>
       </div>
@@ -78,6 +79,9 @@
       </div>
     </div>
   </footer>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  {{{script}}}
+
 </body>
 
 </html>

@@ -13,6 +13,27 @@ a {
   font-weight: bold;
   color: #395b64; }
 
+.btn-1 {
+  background: #395b64;
+  color: #ffffff;
+  border-radius: 0; }
+
+.btn-1:hover {
+  background: #a5c9ca; }
+
+input[placeholder="Search"] {
+  border-radius: 0;
+  min-width: 250px; }
+
+.btn-search {
+  border: 1px solid #a5c9ca;
+  color: #a5c9ca;
+  border-radius: 0; }
+
+.btn-search:hover {
+  color: #000;
+  background-color: #a5c9ca; }
+
 .navbar-brand {
   text-transform: uppercase;
   font-size: 30px;
