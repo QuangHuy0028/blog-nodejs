@@ -1,0 +1,8 @@
+.heading {
+  margin: 20px 0 50px 0; }
+
+.item {
+  padding: 20px 40px;
+  border-radius: 10px;
+  background: #fafafa;
+  box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1); }

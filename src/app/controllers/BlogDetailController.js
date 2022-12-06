@@ -23,13 +23,12 @@ class BlogDetail {
       .catch((err) => next(err));
   }
 
-  // [POST] /blog/update
+  // [GET] /blog/:id/edit
   update(req, res, next) {
-    // res.send('Update ' + req.params.slug);
-    Blog.findOne({ slug: req.params.slug })
+    Blog.findOne({ slug: req.params.id })
       .then((blog) => {
-        blog = blog.toObject();
-        // res.json(blog);
+        if (blog) blog = blog.toObject();
+
         res.render("update/update-page", { blog });
       })
       .catch((err) => next(err));
@@ -37,24 +36,20 @@ class BlogDetail {
 
   // [POST] /blog/update_handle
   update_handle(req, res, next) {
-    var blogName = req.body.name;
-    blogName = createSlug(blogName);
-
-    Blog.deleteOne({ slug: blogName })
-      .then()
-      .catch(function (err) {
-        next(err);
-      });
-
-    const curr = req.body;
-    curr.slug = createSlug(curr.name);
-    const blog = new Blog(req.body, Blog);
-    blog.save((err) => {
-      if (err) return next(err);
-      res.render("message/create-successfully", {
-        message: "Document saved successfully!",
-      });
-    });
+    var blogID = req.params.id;
+    console.log("\n\nBLOG ID : " + blogID + "\n\n");
+    Blog.findOne({ _id: blogID })
+      .then(function (blog) {
+        blog.name = req.body.name;
+        blog.description = req.body.description;
+        blog.image = req.body.image;
+        blog.content = req.body.content;
+        blog.save();
+        res.render("message/create-successfully", {
+          message: "Document saved successfully!",
+        });
+      })
+      .catch((err) => next(err));
   }
 
   // [POST] /blog/store
@@ -72,20 +67,27 @@ class BlogDetail {
   }
   // [POST] /blog/delete
   delete(req, res, next) {
-    res.render("delete-page");
+    Blog.find({})
+      .then((blog) => {
+        blog = blog.map((obj) => obj.toObject());
+        res.render("delete-page", {
+          css: '<link rel="stylesheet" href="/css/delete-page.css">',
+          blog: blog,
+        });
+      })
+      .catch((err) => {
+        next(err);
+      });
   }
-  
-  // [POST] /blog/delete_handle
+
+  // [POST] /blog/delete_handle/
   delete_handle(req, res, next) {
     //res.json(req.body);
-    var blogName = req.body.name;
-    blogName = createSlug(blogName);
+    var blogName = req.params.id;
 
-    Blog.deleteOne({ slug: blogName })
+    Blog.deleteOne({ name: blogName })
       .then(
-        res.render("message/create-successfully", {
-          message: "Delete successfully",
-        })
+        res.send("Delete successfully")
       )
       .catch(function (err) {
         next(err);

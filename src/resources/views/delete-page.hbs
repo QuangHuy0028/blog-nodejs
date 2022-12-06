@@ -1,14 +1,82 @@
 <div class="container-md my-5">
     <div class="row">
-        <div class="col col-md-6">
-            <form action="delete/delete_handle" method="POST">
-                <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <input type="text" name="name" id="name" class="form-control" placeholder="The name of blog" aria-describedby="helpId">
-                  {{!-- <small id="helpId" class="text-muted">Help text</small> --}}
+        <div class="heading">
+            <h1>My blogs</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            {{#each blog}}
+            <div class="item mt-3">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <a href="">
+                            <h2 class="name-blog">
+                                <a style="font-weight: 500;" href="/blog/{{this.slug}}"
+                                    val="{{this.slug}}">{{this.name}}</a>
+                            </h2>
+                        </a>
+                    </div>
+                    <div class="col col-md-6">
+                        <p>{{this.description}}</p>
+                    </div>
+                    <div class="col col-md-2">
+                        <div class="row" style="margin-bottom: 10px;">
+                            <!-- Button trigger modal -->
+                            <a type="button" class="btn btn-primary delete-btn" data-bs-toggle="modal"
+                                data-bs-target="#delete-modal">
+                                Delete
+                            </a>
+                        </div>
+                        <div class="row">
+                            <a class="btn btn-outline-primary d-block" type="link"
+                                href="/blog/{{this.slug}}/edit">Edit</a>
+                        </div>
+                    </div>
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
-            </form>
+            </div>
+            {{/each}}
         </div>
     </div>
 </div>
+
+<!-- Modal -->
+<div class="modal fade" id="delete-modal" tabindex="-1" aria-labelledby="delete-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="delete-modalLabel"></h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                <a href="/" id="modal-delete" type="button" class="btn btn-danger"></a>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        var nameBlog;
+
+        $('.delete-btn').click(function () {
+            $('#delete-modalLabel').text('Delete message');
+            $('.modal-body').text('Do you want to delete the blog ?');
+            $('.modal-footer #modal-delete').text('Delete');
+            item = $(this).parents('.item');
+            nameBlog = item.find('.name-blog a').text().replace(/^\s+|\s+$/gm, '');
+            $('.modal-footer #modal-delete').attr('href', '/');
+        });
+
+        $('#modal-delete').click(function () {
+            $.get('/blog/' + nameBlog + '/delete-handle');
+            console.log(nameBlog);
+        });
+
+    })
+
+</script>

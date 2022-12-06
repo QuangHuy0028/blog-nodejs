@@ -6,8 +6,19 @@
 ::selection {
   background-color: red;
 }
+
+.dropdown-menu {
+  border-radius: 0;
+  box-shadow: 3px 3px 20px rgba(0, 0, 0, 0.2);
+  border: 1px solid rgba(50, 50, 255, 0.3);
+}
+
+.dropdown-item {
+  padding: 15px;
+}
+
 html {
-  font-family: sans-serif;
+  font-family: "sans-serif", "Roboto";
   background-color: $bk-color;
 }
 
@@ -26,14 +37,14 @@ a {
 }
 input[placeholder="Search"] {
   border-radius: 0;
-  min-width: 250px;
+  // min-width: 250px;
 }
 .btn-search {
   border: 1px solid $main-color-2;
   color: $main-color-2;
   border-radius: 0;
 }
-.btn-search:hover{
+.btn-search:hover {
   color: #000;
   background-color: $main-color-2;
 }
@@ -89,14 +100,50 @@ main .main-content .card .card__btn:hover {
   color: #fff !important;
 }
 
-
-
-footer a {
-  color: whitesmoke;
+nav .account {
+  height: 100%;
+  display: block;
+}
+nav .account .thumbnail {
+  height: 100%;
+  width: 100%;
+}
+nav .account .thumbnail span {
+  color: white;
+  display: block;
+  font-size: 2.5rem;
+  margin: auto 0;
 }
 
+footer {
+  color: whitesmoke;
+}
+footer p {
+  color: gray;
+}
 footer a:focus,
 footer a:active,
 footer a:hover {
   color: red !important;
+}
+footer .item {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+  padding: 0;
+  // width: fit-content;
+  transition: all 0.2s ease-in-out;;
+  overflow: hidden;
+}
+footer .item:hover {
+  background: rgba(255, 255, 255, 0);
+}
+footer .thumbnail {
+  width: 70px;
+  height: 100%;
+  margin-right: 20px;
+}
+footer .thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }

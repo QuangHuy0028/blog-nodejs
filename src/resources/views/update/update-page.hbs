@@ -7,7 +7,8 @@
         </div>
     </div>
     <div class="row">
-        <form action="/blog/update-handle" method="POST">
+        <form action="/blog/{{blog._id}}/update-handle" method="POST">
+            <input class="d-none" type="text" name="_id" value="{{blog._id}}">
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" name="name" id="name" class="form-control" placeholder="Blog Name"
@@ -29,8 +30,38 @@
                     {{blog.content}}
                 </textarea>
             </div>
-            
-            <button type="submit" class="btn btn-1 my-5 px-5 py-2">Submit</button>
+            {{!-- <button type="submit" class="btn btn-1 my-5 px-5 py-2" data-bs-toggle="modal"
+                data-bs-target="#update-modal">Submit</button> --}}
+            <button type="button" class="btn btn-1 my-5 px-5 py-2" data-bs-toggle="modal"
+                data-bs-target="#update-modal">Submit</button>
         </form>
     </div>
 </div>
+
+
+<div class="modal fade round-0" id="update-modal" tabindex="-1" aria-labelledby="update-modalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="update-modalLabel">Confirm</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                Do you want update the blog ?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="save-update-btn">Save
+                    changes</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function () {
+        $('#save-update-btn').click(function () {
+            $('form[method="POST"]').submit();
+        });
+    })
+</script>
